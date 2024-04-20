@@ -29,12 +29,12 @@ function divide(a, b) {
 }
 
 function splitValues(arr) {
-    let values_arr = arr.join("").split(/\b/);
+let values_arr = arr.join("").match(/^-?\d+|[+\-*/]|\d+/g);
     console.log(values_arr);
     return values_arr;
 }
 
-const VALID_REGEX = /^\d+[+\-x/]\d+$/;
+const VALID_REGEX = /^(-?\d+)[+\-x/]\d+$/;
 const OPERATOR_REGEX = /[+\-x/]$/;
 const SCREEN = document.getElementById("display");
 
