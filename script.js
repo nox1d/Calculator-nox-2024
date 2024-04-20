@@ -44,7 +44,16 @@ let buttons = document.querySelectorAll("button");
 
 for (let button of buttons) {
     button.addEventListener("click", function() {
-        if (this.className == "operator" && VALID_REGEX.test(SCREEN.innerText)) {
+        if (this.className == "equal") {
+            if (OPERATOR_REGEX.test(SCREEN.innerText)) {
+                values.push(values[0]);
+                values = [operate(splitValues(values))];
+                SCREEN.innerText = values[0];
+            } else if (VALID_REGEX.test(SCREEN.innerText)) {
+                values = [operate(splitValues(values))];
+                SCREEN.innerText = values[0];
+            }
+        } else if (this.className == "operator" && VALID_REGEX.test(SCREEN.innerText)) {
             values = [operate(splitValues(values))];
             values.push(this.value)
             console.log(values);
@@ -58,5 +67,6 @@ for (let button of buttons) {
             console.log(values);
             SCREEN.innerText += this.innerText;
         }
+
     });
 }
