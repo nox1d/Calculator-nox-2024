@@ -1,0 +1,36 @@
+div.frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid hsl(0, 0%, 0%);
+    width: 320px;
+    height: 480px;
+}
+
+div#display {
+    border: 2px solid hsl(0, 0%, 0%);
+    width: 90%;
+    height: 15%;
+    margin: 4px;
+}
+
+div.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+    margin: 4px;
+    border: 2px solid hsl(0, 0%, 0%);
+    gap: 2px;
+}
+
+button {
+    flex: 1;
+    min-width: 20%;
+    height: 15%;
+    border: 2px solid hsl(0, 0%, 0%);
+    border-radius: 4px;
+}
