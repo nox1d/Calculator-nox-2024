@@ -28,8 +28,8 @@ function divide(a, b) {
     return a/b;
 }
 
-function splitValues(values) {
-    let values_arr = values.split(/\b/);
+function splitValues(arr) {
+    let values_arr = arr.join("").split(/\b/);
     console.log(values_arr);
     return values_arr;
 }
@@ -45,7 +45,7 @@ let buttons = document.querySelectorAll("button");
 for (let button of buttons) {
     button.addEventListener("click", function() {
         if (this.className == "operator" && VALID_REGEX.test(SCREEN.innerText)) {
-            values = [operate(values)];
+            values = [operate(splitValues(values))];
             values.push(this.value)
             console.log(values);
             SCREEN.innerText = values[0] + this.innerText;
