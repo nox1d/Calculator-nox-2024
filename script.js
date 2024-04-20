@@ -1,7 +1,7 @@
 function operate(arr) {
     let operator = arr[1];
-    let num1 = parseInt(arr[0]);
-    let num2 = parseInt(arr[2]);
+    let num1 = parseFloat(arr[0]);
+    let num2 = parseFloat(arr[2]);
     let result;
 
     if (operator == "+") result = sum(num1, num2);
@@ -29,12 +29,12 @@ function divide(a, b) {
 }
 
 function splitValues(arr) {
-let values_arr = arr.join("").match(/^-?\d+|[+\-*/]|\d+/g);
+    let values_arr = arr.join("").replace(/^[*/]\d+/, 0).match(/^[+-]?(\d+([.]\d*)?|[.]\d+)|[+\-*/]|(\d+([.]\d*)?|[.]\d+)/g);
     console.log(values_arr);
     return values_arr;
 }
 
-const VALID_REGEX = /^(-?\d+)[+\-x/]\d+$/;
+const VALID_REGEX = /^[+\-x/]?(\d+([.]\d*)?|[.]\d+)[+\-x/](\d+([.]\d*)?|[.]\d+)$/;
 const OPERATOR_REGEX = /[+\-x/]$/;
 const SCREEN = document.getElementById("display");
 
