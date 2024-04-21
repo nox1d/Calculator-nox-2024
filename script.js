@@ -60,6 +60,11 @@ function replaceOperator(button) {
     SCREEN.innerText = SCREEN.innerText.substring(0, SCREEN.innerText.length - 1) + button.innerText;
 }
 
+function clear() {
+    values = [];
+    SCREEN.innerText = values;
+}
+
 // INSTANCES
 
 const VALID_REGEX = /^[+\-x/]?(\d+([.]\d*)?|[.]\d+)[+\-x/](\d+([.]\d*)?|[.]\d+)$/;
@@ -72,7 +77,9 @@ let buttons = document.querySelectorAll("button");
 
 for (let button of buttons) {
     button.addEventListener("click", function() {
-        if (this.className == "equal") {
+        if (this.className == "clear") {
+            clear();
+        } else if (this.className == "equal") {
             getResult();
         } else if (this.className == "operator" && VALID_REGEX.test(SCREEN.innerText)) {
             continueOperation(this);
@@ -83,6 +90,5 @@ for (let button of buttons) {
             console.log(values);
             SCREEN.innerText += this.innerText;
         }
-        
     });
 }
