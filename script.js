@@ -65,6 +65,11 @@ function clear() {
     SCREEN.innerText = values;
 }
 
+function backspace() {
+    values.pop();
+    SCREEN.innerText = SCREEN.innerText.substring(0, SCREEN.innerText.length - 1);
+}
+
 // INSTANCES
 
 const VALID_REGEX = /^[+\-x/]?(\d+([.]\d*)?|[.]\d+)[+\-x/](\d+([.]\d*)?|[.]\d+)$/;
@@ -79,6 +84,8 @@ for (let button of buttons) {
     button.addEventListener("click", function() {
         if (this.className == "clear") {
             clear();
+        } else if (this.className == "delete") {
+            backspace();
         } else if (this.className == "equal") {
             getResult();
         } else if (this.className == "operator" && VALID_REGEX.test(SCREEN.innerText)) {
