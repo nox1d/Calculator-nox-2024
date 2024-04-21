@@ -11,7 +11,11 @@ function operate(arr) {
     if (operator == "*") result = multiply(num1, num2);
     if (operator == "/") result = divide(num1, num2);
 
-    return +result.toPrecision(8);
+    if (typeof(result) == "number") {
+        return +result.toPrecision(8);
+    } else {
+        return result;
+    }
 }
 
 function splitValues(arr) {
@@ -33,7 +37,10 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a/b;
+    if (b == 0) {
+        return "Error: Divison by zero";
+    }
+    return +(a/b);
 }
 
 function getResult() {
