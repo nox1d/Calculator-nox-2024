@@ -38,7 +38,10 @@ function divide(a, b) {
 
 function getResult() {
     if (OPERATOR_REGEX.test(SCREEN.innerText)) {
-        values.push(values[0]);
+        let len = values.length;
+        for (i = 0; i < len-1; i++) {
+            values.push(values[i]);
+        }
         values = [operate(splitValues(values))];
         SCREEN.innerText = values[0];
     } else if (VALID_REGEX.test(SCREEN.innerText)) {
